@@ -115,7 +115,7 @@ p, span, li, a, input, textarea, select {
 /* Header over Hero (Transparent mode support) */
 .header-wrapper--transparent {
   background-color: transparent !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.15) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
   position: absolute;
   width: 100%;
   left: 0;
@@ -123,12 +123,45 @@ p, span, li, a, input, textarea, select {
 }
 
 .header-wrapper--transparent .header__menu-item,
-.header-wrapper--transparent .header__icon {
+.header-wrapper--transparent .header__icon,
+.header-wrapper--transparent .header__heading,
+.header-wrapper--transparent .header__heading-link,
+.header-wrapper--transparent .header__heading-link * {
   color: #FFFFFF !important;
 }
 
 .header-wrapper--transparent .header__icon svg {
-  fill: #FFFFFF !important;
+  fill: none !important;
+  stroke: #FFFFFF !important;
+}
+
+.header-wrapper--transparent .header__icon svg path {
+  stroke: #FFFFFF !important;
+}
+
+/* Sticky Header Transitions - Solid colors reversion */
+.shopify-section-header-sticky .header-wrapper {
+  box-shadow: var(--shadow-premium) !important;
+  backdrop-filter: blur(10px) !important;
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  border-bottom: 1px solid var(--color-luxury-border-light) !important;
+}
+
+.shopify-section-header-sticky .header-wrapper .header__menu-item,
+.shopify-section-header-sticky .header-wrapper .header__icon,
+.shopify-section-header-sticky .header-wrapper .header__heading,
+.shopify-section-header-sticky .header-wrapper .header__heading-link,
+.shopify-section-header-sticky .header-wrapper .header__heading-link * {
+  color: var(--color-luxury-text) !important;
+}
+
+.shopify-section-header-sticky .header-wrapper .header__icon svg {
+  fill: none !important;
+  stroke: var(--color-luxury-text) !important;
+}
+
+.shopify-section-header-sticky .header-wrapper .header__icon svg path {
+  stroke: var(--color-luxury-text) !important;
 }
 
 /* Desktop navigation hover triggers */
@@ -185,8 +218,40 @@ p, span, li, a, input, textarea, select {
 /* ==========================================================================
    Hero Banner
    ========================================================================== */
+/* Custom Banner Spacing & Overlay Details */
+.banner {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle dark gradient overlay at top 40% of banner to make white header links readable */
+.banner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 40%;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0) 100%);
+  z-index: 2;
+  pointer-events: none;
+}
+
 .banner__content {
-  padding: 6rem 4rem !important;
+  padding: 8rem 4rem !important;
+  position: relative;
+  z-index: 3;
+}
+
+/* Offset top padding on the homepage banner to prevent collision with the transparent header */
+main[data-template="index"] .banner__content {
+  padding-top: 18rem !important;
+}
+
+@media screen and (max-width: 749px) {
+  main[data-template="index"] .banner__content {
+    padding-top: 14rem !important;
+  }
 }
 
 .banner__box {

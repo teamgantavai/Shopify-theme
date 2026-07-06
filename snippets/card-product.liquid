@@ -225,10 +225,11 @@
                         {%- liquid
                           assign swatch_image = ''
                           assign swatch_color = value | downcase | replace: ' ', ''
+                          assign value_downcase = value | downcase
                           
                           for variant in card_product.variants
                             assign variant_color = variant.options[color_option_index] | downcase
-                            if variant_color == value | downcase and variant.featured_media != blank
+                            if variant_color == value_downcase and variant.featured_media != blank
                               assign swatch_image = variant.featured_media | image_url: width: 600
                               break
                             endif
