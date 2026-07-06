@@ -761,3 +761,214 @@ main[data-template="index"] .banner__content {
     z-index: 3;
   }
 }
+
+/* ==========================================================================
+   Navigation Badges (Inspiration: Ellamart Theme)
+   ========================================================================== */
+.header__menu-item {
+  position: relative;
+}
+
+.menu-item-text-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.menu-badge {
+  position: absolute;
+  top: -16px;
+  right: -8px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 1px 5px;
+  border-radius: 4px;
+  line-height: 1.2;
+  letter-spacing: 0.04em;
+  color: #FFFFFF !important;
+  pointer-events: none;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  font-family: var(--font-body-family) !important;
+}
+
+.menu-badge--new {
+  background-color: #00B2FE !important;
+}
+
+.menu-badge--hot {
+  background-color: #FFA800 !important;
+}
+
+.menu-badge--sale {
+  background-color: #FF4B4B !important;
+}
+
+/* ==========================================================================
+   Pill Search Bar Inline on Desktop
+   ========================================================================== */
+@media screen and (min-width: 990px) {
+  /* Hide default popup modal triggers on desktop */
+  .header__search details summary.header__icon {
+    display: none !important;
+  }
+  
+  /* Make the details container open inline */
+  .header__search details[open],
+  .header__search details {
+    display: block !important;
+    position: static !important;
+  }
+  
+  .header__search .search-modal {
+    position: static !important;
+    display: block !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    min-width: 32rem;
+  }
+  
+  .header__search .search-modal__content {
+    padding: 0 !important;
+  }
+  
+  .header__search .search-modal__close-button {
+    display: none !important;
+  }
+  
+  /* Search Pill Styling overrides */
+  .header__search .field__input {
+    border-radius: var(--border-radius-pill) !important;
+    background-color: var(--color-luxury-bg-off) !important;
+    border: 1px solid var(--color-luxury-border-med) !important;
+    padding: 1rem 5rem 1rem 2rem !important;
+    height: 4rem !important;
+    min-height: 4rem !important;
+    font-size: 1.3rem !important;
+    transition: var(--transition-fast) !important;
+  }
+  
+  .header__search .field__input:focus {
+    border-color: var(--color-luxury-text) !important;
+    background-color: #FFFFFF !important;
+  }
+  
+  .header__search .field__label {
+    top: 50% !important;
+    left: 2rem !important;
+    transform: translateY(-50%) !important;
+    font-size: 1.3rem !important;
+    color: var(--color-luxury-text-sec) !important;
+    transition: var(--transition-fast) !important;
+    pointer-events: none;
+  }
+  
+  /* Push label out of the way when input is active */
+  .header__search .field__input:focus ~ .field__label,
+  .header__search .field__input:not(:placeholder-shown) ~ .field__label {
+    opacity: 0;
+  }
+  
+  .header__search .search__button {
+    right: 0.5rem !important;
+    height: 3rem !important;
+    width: 3rem !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+  }
+
+  /* Support search aesthetics for transparent homepage header overlay */
+  .header-wrapper--transparent .header__search .field__input {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    border-color: rgba(255, 255, 255, 0.25) !important;
+    color: #FFFFFF !important;
+  }
+
+  .header-wrapper--transparent .header__search .field__input:focus {
+    background-color: rgba(255, 255, 255, 0.2) !important;
+    border-color: #FFFFFF !important;
+  }
+
+  .header-wrapper--transparent .header__search .field__label {
+    color: rgba(255, 255, 255, 0.7) !important;
+  }
+
+  .header-wrapper--transparent .header__search .search__button svg {
+    stroke: #FFFFFF !important;
+  }
+
+  /* Align sticky state styles */
+  .shopify-section-header-sticky .header__search .field__input {
+    background-color: var(--color-luxury-bg-off) !important;
+    border-color: var(--color-luxury-border-med) !important;
+    color: var(--color-luxury-text) !important;
+  }
+
+  .shopify-section-header-sticky .header__search .field__label {
+    color: var(--color-luxury-text-sec) !important;
+  }
+
+  .shopify-section-header-sticky .header__search .search__button svg {
+    stroke: var(--color-luxury-text) !important;
+  }
+}
+
+/* ==========================================================================
+   Header Icons with Labels
+   ========================================================================== */
+@media screen and (min-width: 990px) {
+  .header__icon {
+    display: inline-flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    height: auto !important;
+    width: auto !important;
+    padding: 0 1.2rem !important;
+    gap: 0.4rem;
+    color: var(--color-luxury-text) !important;
+    text-decoration: none !important;
+    transition: var(--transition-fast) !important;
+  }
+
+  .header__icon:hover {
+    color: var(--color-luxury-text-sec) !important;
+  }
+
+  .header__icon svg {
+    width: 2.2rem !important;
+    height: 2.2rem !important;
+  }
+
+  /* Account label */
+  .header__icon--account::after {
+    content: 'Account';
+    font-size: 1rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    line-height: 1;
+  }
+
+  /* Cart label */
+  .header__icon--cart::after {
+    content: 'Cart';
+    font-size: 1rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    line-height: 1;
+  }
+
+  /* Add label to transparent header state */
+  .header-wrapper--transparent .header__icon {
+    color: #FFFFFF !important;
+  }
+
+  .shopify-section-header-sticky .header__icon {
+    color: var(--color-luxury-text) !important;
+  }
+}
+

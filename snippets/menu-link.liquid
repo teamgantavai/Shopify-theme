@@ -1,0 +1,25 @@
+{%- liquid
+  assign link_title = link.title
+  assign badge_text = ''
+  assign badge_class = ''
+  
+  if link.title contains '[New]' or link.title contains '[new]'
+    assign badge_text = 'New'
+    assign badge_class = 'menu-badge--new'
+    assign link_title = link.title | replace: '[New]', '' | replace: '[new]', ''
+  elsif link.title contains '[Hot]' or link.title contains '[hot]'
+    assign badge_text = 'Hot'
+    assign badge_class = 'menu-badge--hot'
+    assign link_title = link.title | replace: '[Hot]', '' | replace: '[hot]', ''
+  elsif link.title contains '[Sale]' or link.title contains '[sale]'
+    assign badge_text = 'Sale'
+    assign badge_class = 'menu-badge--sale'
+    assign link_title = link.title | replace: '[Sale]', '' | replace: '[sale]', ''
+  endif
+-%}
+<span class="menu-item-text-wrapper">
+  {{- link_title | strip | escape -}}
+  {%- if badge_text != '' -%}
+    <span class="menu-badge {{ badge_class }}">{{ badge_text }}</span>
+  {%- endif -%}
+</span>
