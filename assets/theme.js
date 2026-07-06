@@ -60,7 +60,23 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     localStorage.setItem('theme-wishlist', JSON.stringify(wishlist));
+    updateHeaderWishlistCount();
   });
+
+  // Function to update header wishlist count badge
+  function updateHeaderWishlistCount() {
+    const wishlist = JSON.parse(localStorage.getItem('theme-wishlist') || '[]');
+    const bubble = document.querySelector('#wishlist-icon-bubble .wishlist-count-bubble');
+    const text = document.getElementById('wishlist-count-text');
+    if (bubble && text) {
+      text.textContent = wishlist.length;
+      if (wishlist.length > 0) {
+        bubble.classList.remove('hidden');
+      } else {
+        bubble.classList.add('hidden');
+      }
+    }
+  }
 
   // Restore wishlist buttons state on load
   const wishlist = JSON.parse(localStorage.getItem('theme-wishlist') || '[]');
@@ -72,6 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
       btn.querySelector('svg').style.stroke = '#FF4B4B';
     }
   });
+  updateHeaderWishlistCount();
 
   // --- Dynamic Color Swatches in Cards ---
   document.body.addEventListener('click', (e) => {

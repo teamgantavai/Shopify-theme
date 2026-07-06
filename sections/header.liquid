@@ -285,6 +285,18 @@
         {%- endcase -%}
       {%- endfor -%}
 
+      <a href="#wishlist" class="header__icon header__icon--wishlist link focus-inset" id="wishlist-icon-bubble">
+        <span class="svg-wrapper">
+          <svg class="icon icon-heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="22" height="22">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+          </svg>
+        </span>
+        <span class="visually-hidden">Wishlist</span>
+        <div class="wishlist-count-bubble hidden">
+          <span aria-hidden="true" id="wishlist-count-text">0</span>
+        </div>
+      </a>
+
       <a href="{{ routes.cart_url }}" class="header__icon header__icon--cart link focus-inset" id="cart-icon-bubble">
         {% if cart == empty %}
           <span class="svg-wrapper">{{ 'icon-cart-empty.svg' | inline_asset_content }}</span>

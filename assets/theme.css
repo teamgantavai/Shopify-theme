@@ -20,10 +20,10 @@
   --color-luxury-border-med: #D9D9D9;
   
   /* System Spacing & Radius */
-  --border-radius-card: 12px;
+  --border-radius-card: 16px;
   --border-radius-pill: 24px;
-  --border-radius-btn: 4px;
-  --border-radius-input: 6px;
+  --border-radius-btn: 24px;
+  --border-radius-input: 16px;
   
   /* Subtle Shadows */
   --shadow-premium: 0 4px 20px rgba(0, 0, 0, 0.03);
@@ -763,48 +763,6 @@ main[data-template="index"] .banner__content {
 }
 
 /* ==========================================================================
-   Navigation Badges (Inspiration: Ellamart Theme)
-   ========================================================================== */
-.header__menu-item {
-  position: relative;
-}
-
-.menu-item-text-wrapper {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-}
-
-.menu-badge {
-  position: absolute;
-  top: -16px;
-  right: -8px;
-  font-size: 0.8rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  padding: 1px 5px;
-  border-radius: 4px;
-  line-height: 1.2;
-  letter-spacing: 0.04em;
-  color: #FFFFFF !important;
-  pointer-events: none;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  font-family: var(--font-body-family) !important;
-}
-
-.menu-badge--new {
-  background-color: #00B2FE !important;
-}
-
-.menu-badge--hot {
-  background-color: #FFA800 !important;
-}
-
-.menu-badge--sale {
-  background-color: #FF4B4B !important;
-}
-
-/* ==========================================================================
    Pill Search Bar Inline on Desktop
    ========================================================================== */
 @media screen and (min-width: 990px) {
@@ -915,60 +873,38 @@ main[data-template="index"] .banner__content {
   }
 }
 
-/* ==========================================================================
-   Header Icons with Labels
-   ========================================================================== */
-@media screen and (min-width: 990px) {
-  .header__icon {
-    display: inline-flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    justify-content: center !important;
-    height: auto !important;
-    width: auto !important;
-    padding: 0 1.2rem !important;
-    gap: 0.4rem;
-    color: var(--color-luxury-text) !important;
-    text-decoration: none !important;
-    transition: var(--transition-fast) !important;
-  }
-
-  .header__icon:hover {
-    color: var(--color-luxury-text-sec) !important;
-  }
-
-  .header__icon svg {
-    width: 2.2rem !important;
-    height: 2.2rem !important;
-  }
-
-  /* Account label */
-  .header__icon--account::after {
-    content: 'Account';
-    font-size: 1rem;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    line-height: 1;
-  }
-
-  /* Cart label */
-  .header__icon--cart::after {
-    content: 'Cart';
-    font-size: 1rem;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    line-height: 1;
-  }
-
-  /* Add label to transparent header state */
-  .header-wrapper--transparent .header__icon {
-    color: #FFFFFF !important;
-  }
-
-  .shopify-section-header-sticky .header__icon {
-    color: var(--color-luxury-text) !important;
-  }
+/* Wishlist Header Icon Count Bubble */
+#wishlist-icon-bubble {
+  position: relative;
 }
+
+#wishlist-icon-bubble .wishlist-count-bubble {
+  position: absolute;
+  background-color: var(--color-luxury-text);
+  color: #FFFFFF;
+  height: 1.7rem;
+  width: 1.7rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  font-weight: 600;
+  bottom: 0.8rem;
+  left: 2.2rem;
+  line-height: 1;
+  border: 1px solid var(--color-luxury-bg);
+}
+
+#wishlist-icon-bubble .wishlist-count-bubble.hidden {
+  display: none !important;
+}
+
+/* Transparent header support for wishlist bubble */
+.header-wrapper--transparent #wishlist-icon-bubble .wishlist-count-bubble {
+  background-color: #FFFFFF;
+  color: var(--color-luxury-text);
+  border-color: transparent;
+}
+
 
