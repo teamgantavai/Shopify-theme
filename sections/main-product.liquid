@@ -499,6 +499,23 @@
                     section_id: section.id,
                     show_pickup_availability: true
                   -%}
+
+                  <div class="product-trust-badges no-js-hidden">
+                     <div class="product-trust-badges__grid">
+                       <div class="product-trust-badges__item">
+                         <svg class="product-trust-badges__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="1" y="3" width="22" height="13" rx="3" ry="3"></rect><path d="M16 8h.01"></path><rect x="1" y="16" width="22" height="5" rx="1" ry="1"></rect></svg>
+                         <span class="product-trust-badges__text">Free Shipping</span>
+                       </div>
+                       <div class="product-trust-badges__item">
+                         <svg class="product-trust-badges__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                         <span class="product-trust-badges__text">Secure Checkout</span>
+                       </div>
+                       <div class="product-trust-badges__item">
+                         <svg class="product-trust-badges__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"></path></svg>
+                         <span class="product-trust-badges__text">30-Day Returns</span>
+                       </div>
+                     </div>
+                   </div>
                 {%- when 'rating' -%}
                   {%- if product.metafields.reviews.rating.value != blank -%}
                     <div class="rating-wrapper">
@@ -695,6 +712,24 @@
               {{- 'icon-arrow.svg' | inline_asset_content -}}
             </a>
           </section>
+        </div>
+      </div>
+
+      <!-- Mobile Sticky Add to Cart Bar -->
+      <div class="product-sticky-bar no-js-hidden large-up-hide medium-hide">
+        <div class="product-sticky-bar__container">
+          <div class="product-sticky-bar__info">
+            {%- if product.featured_media -%}
+              <img class="product-sticky-bar__image" src="{{ product.featured_media | image_url: width: 100 }}" alt="{{ product.title | escape }}" loading="lazy" width="48" height="48">
+            {%- endif -%}
+            <div>
+              <p class="product-sticky-bar__title">{{ product.title | escape }}</p>
+              <p class="product-sticky-bar__price">{{ product.selected_or_first_available_variant.price | money }}</p>
+            </div>
+          </div>
+          <button type="button" class="button button--primary" onclick="document.querySelector('.product-form__buttons button[name=add]')?.click()">
+            Add
+          </button>
         </div>
       </div>
 
